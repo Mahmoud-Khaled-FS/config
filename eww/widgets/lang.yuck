@@ -1,0 +1,8 @@
+(deflisten lang "./scripts/lang.sh")
+
+(defwidget lang []
+	(box
+	:orientation "h"
+	:class "lang"
+	"${lang}")
+)

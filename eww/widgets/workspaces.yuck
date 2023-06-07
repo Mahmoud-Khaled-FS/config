@@ -1,0 +1,35 @@
+(deflisten workspaces `./scripts/workspaces.sh workspaces`)
+(deflisten window `./scripts/workspaces.sh window`)
+
+(defwidget workspaces []
+	(box
+		:class "workspaces"
+		:halign "center"
+		:valign "center"
+		:vexpand true
+		:hexpand true
+		:spacing 0
+			(for workspace in {workspaces.workspaces}
+				(eventbox
+					:cursor "pointer"
+					(button
+						:class "workspace-btn ${workspace.id == workspaces.active ?
+						"active" : ""} ${workspace.windows > 0 ? "occupied" : "empty"}"
+						:onclick "hyprctl dispatch workspace ${workspace.id}"
+						"${workspaces.active == workspace.id ? "󰢘 " :
+						"${workspace.windows > 0 ? " " : " "}"}"
+
+			)
+        )
+    )
+))
+
+
+(defwidget window_title [] 
+  (box 
+    :class "window"
+    :halign "center"
+    :valign "center"
+    "${window.class}: ${window.title}"
+  )
+)

@@ -1,0 +1,96 @@
+(include "./widgets/workspaces.yuck")
+(include "./widgets/lang.yuck")
+(defpoll date :interval "5s" `date +'{"hour":"%H","min":"%M"}'`)
+(defpoll net :interval "1s" `./scripts/connection.sh`)
+
+(defwidget time []
+  (label :text "${date.hour}:${date.min}")
+)
+
+(defwidget conn []
+  (label :text "${net}")
+)  
+
+(defwidget app_launcher []
+	(box
+		:orientation "h"
+		:class "app"
+		(button
+			:valign "center"
+			:onclick "exec ~/.scripts/rofi_launcher.sh"
+	  "󰣇"
+		)
+	)
+)
+
+(defwidget power []
+	(box
+		:orientation "h"
+		:class "power"
+		(eventbox
+      :cursor "pointer"
+      (button
+        :valign "center"
+        :onclick "exec ~/.config/rofi/power/power"
+	  " "
+		)
+   )  
+	)
+)
+
+(defwidget cpu []
+	(box
+		:class "cpu"
+		"${round(EWW_CPU.avg,0)} "
+	)
+)
+
+(defwidget ram []
+	(box
+		:class "ram"
+		"${round((EWW_RAM.used_mem / EWW_RAM.total_mem) * 100, 0)} "
+	)
+)
+
+
+(defwidget right []
+	(box
+		:spacing 15
+		:halign "end"
+		:space-evenly false
+		(cpu)
+		(ram)
+		(conn)
+    (time)
+    (power)
+	)
+)
+
+(defwidget center []
+	(box
+		:spacing 15
+		:halign "center"
+		:space-evenly false
+		(window_title)
+	)
+)
+
+(defwidget left []
+	(box
+		:spacing 15
+		:halign "start"
+		:space-evenly false
+		(app_launcher)
+		(workspaces)
+		(lang)
+	)
+)
+
+(defwidget bar []
+	(box
+		:class "bar"
+		(left)
+		(center)
+		(right)
+	)
+)

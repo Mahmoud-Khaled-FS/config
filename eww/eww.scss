@@ -1,0 +1,56 @@
+*{
+	all:unset;
+}
+
+
+.bar {
+  color: #D3EBE9;
+	font-family: "JetBrainsMono Nerd Font";
+	//font-family: "RobotoMono Nerd Font";
+	padding: 5px 25px;
+	background-color: #0A0F14;
+	border-radius: 15px;
+	box-shadow: 1px 1px 2px 1px rgba(0, 0, 0, 0.3);
+}
+
+.app {
+	font-size: 18px;
+	color: #2BAFFF;
+}
+
+.power {
+  font-size: 18px;
+  padding-left: 10px;
+  color: #AA4A44;
+}
+
+.workspaces  {
+	padding: 0px 15px;
+	background-color: #10151B;
+	border-radius: 10px;
+}
+
+.workspace-btn {
+	//font-family: "Awesome 6 free";
+	//font-family: "Adobe Courier";
+	font-size: 15px;
+}
+
+.workspace-btn.occupied.active {
+	font-size: 18px;
+	color: #EDB54B;
+  margin-left: 2px;
+}
+
+.workspace-btn.occupied {
+	color: #4E5165;
+}
+
+.workspace-btn.empty {
+	color: #2c2c2c;
+}
+
+.lang {
+	font-size: 12px;
+	border-bottom:1px solid #245361 ;
+}

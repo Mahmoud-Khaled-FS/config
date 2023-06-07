@@ -1,0 +1,7 @@
+[Default Applications]
+application/x-zerosize=nvim.desktop
+inode/blockdevice=thunar-settings.desktop
+
+[Added Associations]
+application/x-zerosize=nvim.desktop;
+inode/blockdevice=thunar-settings.desktop;
